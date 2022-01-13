@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="shareButton">shareButton</string>
+    <string name="backButton">backButton</string>
+    <string name="close_button">close button</string>
+    <string name="result">Your Result: </string>
+</resources>
