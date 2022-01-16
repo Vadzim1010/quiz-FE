@@ -6,12 +6,13 @@ import androidx.fragment.app.FragmentTransaction
 import com.rsschool.quiz.*
 import com.rsschool.quiz.data.DataManager
 import com.rsschool.quiz.model.PageState
-import com.rsschool.quiz.veiw.ui.listeners.BackButtonListener
-import com.rsschool.quiz.veiw.ui.listeners.NextButtonListener
-import com.rsschool.quiz.veiw.ui.listeners.StartOverButtonListener
+import com.rsschool.quiz.veiw.ui.quiz.QuizButtonsListener
+import com.rsschool.quiz.veiw.ui.result.ResultButtonsListener
+import com.rsschool.quiz.veiw.ui.quiz.QuizFragment
+import com.rsschool.quiz.veiw.ui.result.ResultFragment
 
-class MainActivity : AppCompatActivity(), NextButtonListener, BackButtonListener,
-    StartOverButtonListener {
+class MainActivity : AppCompatActivity(), QuizButtonsListener,
+    ResultButtonsListener {
 
     private val dataManager: DataManager = DataManager()
 
@@ -24,8 +25,7 @@ class MainActivity : AppCompatActivity(), NextButtonListener, BackButtonListener
 
     private fun startQuizFragment(pageState: PageState) {
         val quizFragment = QuizFragment.newInstance(pageState)
-        quizFragment.setNextButtonListener(this)
-        quizFragment.setBackButtonListener(this)
+        quizFragment.setQuizListener(this)
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, quizFragment)
         transaction.commit()
